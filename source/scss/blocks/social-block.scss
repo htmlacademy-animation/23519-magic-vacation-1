@@ -3,7 +3,6 @@
 
   &:hover {
     .social-block__list {
-      opacity: 1;
       pointer-events: auto;
     }
   }
@@ -87,7 +86,6 @@
   top: 100%;
   right: 0;
   margin-top: 1.5rem;
-  opacity: 0;
   pointer-events: none;
 
   @media (min-width: $stop-scaling) {
@@ -144,7 +142,24 @@
 
   li {
     flex: none;
+    opacity: 0;
     margin-bottom: 0.5rem;
+    transform: translateY(10px);
+    transition: opacity .2s, transform 1s;
+
+    .social-block--active & {
+      transition: opacity .2s, transform 0.2s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .social-block--active &:nth-child(2) {
+      transition-delay: .1s;
+    }
+
+    .social-block--active &:nth-child(3) {
+      transition-delay: .2s;
+    }
 
     @media (min-width: $stop-scaling) {
       margin-bottom: 5px;
