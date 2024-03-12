@@ -36,8 +36,9 @@
   width: 10rem;
   color: $c-light;
   opacity: 0;
-  transform: translateX(-10px);
-  transition: opacity .2s, transform .2s;
+  transform: translateX(-1rem);
+  transition: opacity .3s, transform .3s;
+  transition-timing-function: cubic-bezier(0, 0.8, 0.5, 0.9);
 
   body.loaded & {
     opacity: 1;
@@ -138,6 +139,13 @@
 .page-header__nav {
   display: flex;
   align-items: center;
+  opacity: 0;
+  transition: opacity .3s;
+  transition-timing-function: cubic-bezier(0, 0.8, 0.5, 0.9);
+  
+  body.loaded & {
+    opacity: 1;
+  }
 
   @media (max-width: $tablet) and (orientation: portrait) {
     position: fixed;
@@ -185,13 +193,6 @@
   font-size: 1.2rem;
   line-height: 1.0418;
   color: $c-light;
-  opacity: 0;
-  transition: opacity .2s;
-  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
-  
-  body.loaded & {
-    opacity: 1;
-  }
 
   @media (min-width: $stop-scaling) {
     font-size: 12px;
@@ -293,10 +294,14 @@
     }
 
     &.active {
-      &::after {
+      .loaded &::after {
         transform: scaleX(1);
-        display: block;
+        transform-origin: bottom left;
       }
+      // &::after {
+      //   transform: scaleX(1);
+      //   display: block;
+      // }
     }
 
     &:hover,
