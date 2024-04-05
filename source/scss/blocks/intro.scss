@@ -95,7 +95,7 @@
   line-height: 1.27;
   opacity: 0;
   transform: translateY(10px);
-  transition: opacity .3s, transform .3s ease-out;
+  transition: opacity $transitionDuration, transform $transitionDuration ease-out;
 
   .screen.active & {
     opacity: 1;
