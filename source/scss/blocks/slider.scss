@@ -98,13 +98,13 @@
   line-height: 2rem;
   opacity: 0;
   transform: translateX(10px);
-  transition: opacity .1s, transform .3s;
+  transition: opacity .1s, transform $transitionDuration;
   transform-origin: bottom right;
 
   .swiper-slide-next &,
   .swiper-slide-active & {
     opacity: 1;
-    transition: opacity .3s, transform .3s;
+    transition: opacity $transitionDuration, transform $transitionDuration;
     transition-delay: .2s;
     transform: translateX(0px);
     transform-origin: bottom left;

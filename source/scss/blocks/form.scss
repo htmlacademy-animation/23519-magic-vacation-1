@@ -43,7 +43,7 @@
   border: 0;
   border-radius: 3rem;
   outline: none;
-  transition: transform .3s;
+  transition: transform $transitionDuration;
   transform: scaleX(0);
   transform-origin: center right;
 

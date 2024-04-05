@@ -9,6 +9,7 @@ import form from "./modules/form.js";
 import social from "./modules/social.js";
 import FullPageScroll from "./modules/full-page-scroll";
 import onWindowLoadedHandler from "./modules/onWindowLoadedHandler.js";
+import BackgroundAnimation from "./modules/background-animation.js";
 
 // init modules
 mobileHeight();
@@ -21,5 +22,5 @@ form();
 social();
 onWindowLoadedHandler();
 
-const fullPageScroll = new FullPageScroll();
+const fullPageScroll = new FullPageScroll(new BackgroundAnimation());
 fullPageScroll.init();

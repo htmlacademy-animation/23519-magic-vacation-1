@@ -47,7 +47,7 @@
   background-color: $c-light;
   z-index: 1;
   transform: translateY(100%);
-  transition: transform .3s;
+  transition: transform $transitionDuration;
   transition-timing-function: cubic-bezier(0, 0.8, 0.5, 0.9);
   
 
@@ -309,8 +309,12 @@
   }
 }
 
+.screen--game,
+.screen--rules,
 .screen--prizes {
+  position: relative;
   background-color: $c-dark;
+  z-index: 3;
 }
 
 .screen--game {
@@ -361,4 +365,23 @@
 
 .screen--rules {
   background-color: $c-dark;
+}
+
+.animation-screen-background {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #5f458c;
+  z-index: 2;
+  transition: transform $transitionDuration, opacity $transitionDuration .2s;
+  transform: translateY(100%);
+  pointer-events: none;
+
+  &.active {
+    transform: translateY(0);
+    // opacity: 0;
+    // z-index: 0;
+  }
 }
