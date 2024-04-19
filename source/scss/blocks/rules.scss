@@ -150,52 +150,26 @@ $countItems: 4;
   @for $i from 1 through $countItems {
     &:nth-child(#{$i}) {
       p,
+      .rules__item-bubble,
       &::before {
         animation-delay: $i * $initialAnimationDelay;
       }
     }
   }
 
-  // &:nth-child(2) {
-  //   p,
-  //   &::before {
-  //     animation-delay: .4s;
-  //   }
-  // }
-
-  // &:nth-child(3) {
-  //   p,
-  //   &::before {
-  //     animation-delay: .5s;
-  //   }
-  // }
-
-  // &:nth-child(4) {
-  //   p,
-  //   &::before {
-  //   animation-delay: .6s;
-  //   }
-  // }
-
-  &::before {
-    content: counter(li);
-    counter-increment: li;
+  .rules__item-bubble {
     position: absolute;
     top: 0;
     left: 0;
+    transform: scale(0);
     width: 4.5rem;
     height: 4.5rem;
-    font-family: $font-alt;
-    font-weight: 400;
-    font-size: 2.4rem;
+    display: block;
     background-color: $c-purple;
     border-radius: 50%;
-    line-height: 5rem;
-    text-align: center;
-    transform: scale(0);
     color: transparent;
     animation-duration: $animationDuration;
-    animation-name: zoomIn;
+    animation-name: showRulesBubble;
     animation-delay: $initialAnimationDelay;
     animation-play-state: paused;
     animation-fill-mode: forwards;
@@ -205,18 +179,12 @@ $countItems: 4;
       animation-play-state: running;
     }
 
-    @keyframes zoomIn {
+    @keyframes showRulesBubble {
       0% {
-        color: transparent;
         transform: scale(0);
       }
 
-      50% {
-        color: transparent;
-      }
-
       100% {
-        color: #fff;
         transform: scale(1);
       }
     }
@@ -238,12 +206,64 @@ $countItems: 4;
     }
   }
 
+  &::before {
+    content: counter(li);
+    counter-increment: li;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 1.6rem;
+    font-family: $font-alt;
+    font-weight: 400;
+    font-size: 2.4rem;
+    line-height: 5rem;
+    text-align: center;
+    color: transparent;
+    animation-duration: $animationDuration;
+    animation-name: showRulesBubbleText;
+    animation-delay: $initialAnimationDelay;
+    animation-play-state: paused;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.09, 0.38, 0.22, 1.43);
+
+    .active & {
+      animation-play-state: running;
+    }
+
+    @keyframes showRulesBubbleText {
+      0% {
+        color: transparent;
+      }
+
+      50% {
+        color: transparent;
+      }
+
+      100% {
+        color: #fff;
+      }
+    }
+
+    @media (max-width: $tablet) and (orientation: portrait) {
+      top: 1rem;
+      left: 0.8rem;
+      line-height: 3rem;
+      font-size: 1.4rem;
+    }
+
+    @media (max-width: $mobile) and (orientation: landscape) {
+      top: 0.6rem;
+      line-height: 3rem;
+      font-size: 1.4rem;
+    }
+  }
+
   p {
     margin: 0;
     opacity: 0;
     transform: translateX(2rem);
     animation-duration: 0.3s;
-    animation-name: slideIn;
+    animation-name: showRulesText;
     animation-delay: 0.3s;
     animation-delay: $initialAnimationDelay;
     animation-play-state: paused;
@@ -254,7 +274,7 @@ $countItems: 4;
       animation-play-state: running;
     }
 
-    @keyframes slideIn {
+    @keyframes showRulesText {
       0% {
         transform: translateX(2rem);
         opacity: 0;
