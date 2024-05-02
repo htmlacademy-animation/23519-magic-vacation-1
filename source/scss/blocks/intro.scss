@@ -26,6 +26,8 @@
 .intro__title {
   margin: 0;
   max-width: 99rem;
+  display: flex;
+  flex-wrap: wrap;
   text-transform: uppercase;
   font-family: $font-alt;
   font-weight: 400;

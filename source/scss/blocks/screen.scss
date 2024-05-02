@@ -7,6 +7,7 @@
   overflow: hidden;
 
   &--hidden {
+    pointer-events: none;
     display: none;
   }
 
@@ -310,6 +311,7 @@
 }
 
 .screen--game,
+.screen--show,
 .screen--rules,
 .screen--prizes {
   position: relative;

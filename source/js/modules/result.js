@@ -12,7 +12,11 @@ export default () => {
         let targetEl = [].slice.call(results).filter(function (el) {
           return el.getAttribute(`id`) === target;
         });
-        targetEl[0].classList.add(`screen--show`);
+
+        setTimeout(() => {
+          targetEl[0].classList.add(`screen--show`);
+        }, 10);
+
         targetEl[0].classList.remove(`screen--hidden`);
       });
     }
