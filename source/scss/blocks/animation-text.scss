@@ -1,0 +1,21 @@
+$spaceBetweenWords: 1rem;
+$offsetTop: 1.5rem;
+
+.animate-text-word {
+  padding-top: $offsetTop;
+  transform: translateY(-$offsetTop);
+  overflow: hidden;
+  display: inline-flex;
+}
+
+.animate-text-space {
+  margin-right: $spaceBetweenWords;
+}
+.animate-text-letter {
+  display: inline-block;
+  transform: translate3d(0, 1em, 0);
+
+  .active & {
+    transform: translate3d(0, 0, 0);
+  }
+}

@@ -30,11 +30,9 @@
 }
 
 .form__field {
-  flex: none;
-  margin-right: 3rem;
   padding: 0 5.6rem;
   height: 6rem;
-  width: calc(100% - 21rem);
+  width: 100%;
   text-transform: uppercase;
   font: inherit;
   font-size: 2.4rem;
@@ -44,11 +42,29 @@
   border-radius: 3rem;
   outline: none;
   transition: transform $transitionDuration;
-  transform: scaleX(0);
+  transform: translateX(100%);
   transform-origin: center right;
 
+  &::placeholder {
+    color: transparent;
+    transition: color $transitionDuration;
+  }
+
+  &-wrapper {
+    margin-right: 3rem;
+    border-radius: 3rem;
+    flex: none;
+    overflow: hidden;
+    width: calc(100% - 21rem);
+  }
+
+  .screen--show &,
   .screen.active & {
-    transform: scaleX(1);
+    transform: translateX(0);
+    &::placeholder {
+      transition-delay: $transitionDuration;
+      color: inherit;
+    }
   }
 
   &:focus {
@@ -133,7 +149,7 @@
 }
 
 .form--result {
-  .form__field {
+  .form__field-wrapper {
     width: calc(100% - 31rem);
 
     @media (min-width: $stop-scaling) {
